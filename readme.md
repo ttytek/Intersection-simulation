@@ -23,6 +23,10 @@ make test_runner tworzy plik wykonywalny test_runner który uruchamia testy jedn
 
 Do projektu dołączony jest plik Doxyfile który umożliwia wygenerowanie dokumentacji za pomocą komendy `doxygen Doxyfile`
 
+showcase.sh kompiluje program uruchamia wszystkie potrzebne skrypty zeby zaprezentowac dzialanie programu, generuje w data/in.json przykladowe wejscie, w data/out.json umieszcze wyjscie algorytmu, na standardowe wyjscie wypisuje wizualizacje
+
+
+Wizualizacja wybranych stanów skrzyzowania
 ```
      |  |  |
      |     |
