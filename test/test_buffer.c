@@ -16,9 +16,6 @@ vehicle make_vehicle(const char* id, direction start, direction end) {
     return v;
 }
 
-void setUp(void) {}
-void tearDown(void) {}
-
 void test_buf_init_should_reset_buffer_state(void) {
     v_buffer buf;
     buf.head = 2; buf.tail = 1; buf.count = 3;
