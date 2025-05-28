@@ -1,3 +1,5 @@
+1.
+
          |   |   |               
          |       |               
          |   |   |               
@@ -19,3 +21,5 @@
          |   |   |    
 
 Kolor światła oznaczonego X nie zawsze wyświetla się poprawnie
+
+2. Usunąć hardcoded ścieżki z make test_runner
