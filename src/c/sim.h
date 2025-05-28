@@ -7,6 +7,10 @@
 
 #define STATES 9
 
+#ifndef MIN_LIGHT_DURATION
+#define MIN_LIGHT_DURATION 4
+#endif
+
 /**
  * @brief Represents the state of the traffic intersection simulation.
  */
@@ -14,6 +18,8 @@ typedef struct simulation {
     v_buffer vehicles[4][4]; /**< 4x4 matrix of vehicle buffers (per direction/turn). */
     bool interim;            /**< Flag indicating if lights are in an interim state. */
     int mode;                /**< Current active traffic light mode (state index). */
+    int last_change;         /**< # of step in which the last mode change occured. */
+    int step_n;              /**< Number of steps elapsed since the start of simulation. */
     state lights[4][4];      /**< 4x4 matrix representing the current light colors. */
 } simulation;
 
