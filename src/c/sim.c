@@ -62,11 +62,12 @@ const bool states[9][4][4] = {
 
 };
 
-void simulation_init(simulation *sim) {
+void simulation_init(simulation *sim, int min_light_duration) {
   sim->interim = false;
   sim->mode = 0;
   sim->step_n = 0;
-  sim->last_change = -MIN_LIGHT_DURATION; //Allows for immediate state change at the beggining of the simulation.
+  sim->min_light_duration = min_light_duration;
+  sim->last_change = -min_light_duration; //Allows for immediate state change at the beggining of the simulation.
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
       buf_init(&(sim->vehicles[i][j]));
@@ -134,7 +135,7 @@ int sim_step(simulation *sim, vehicle *left) {
     sim->interim = false;
     sim->last_change=sim->step_n;
   } else {
-    if(sim->step_n-sim->last_change>=MIN_LIGHT_DURATION){
+    if(sim->step_n-sim->last_change>=sim->min_light_duration){
       int opt_mode = calculate_optimal_state(sim);
       if (opt_mode != sim->mode) {
         set_lights_interim(sim, sim->mode, opt_mode);

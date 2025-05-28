@@ -11,7 +11,7 @@
 int main() {
   char command[16];
   simulation sim;
-  simulation_init(&sim);
+  simulation_init(&sim, 0);
   print_sim_status(2, &sim);
   bool added_since_last_step = false;
   while (scanf("%s", command) == 1) {

@@ -7,10 +7,6 @@
 
 #define STATES 9
 
-#ifndef MIN_LIGHT_DURATION
-#define MIN_LIGHT_DURATION 4
-#endif
-
 /**
  * @brief Represents the state of the traffic intersection simulation.
  */
@@ -21,6 +17,7 @@ typedef struct simulation {
     int last_change;         /**< # of step in which the last mode change occured. */
     int step_n;              /**< Number of steps elapsed since the start of simulation. */
     state lights[4][4];      /**< 4x4 matrix representing the current light colors. */
+    int min_light_duration;  /**< Simulation parameter controling how often the lights can change */
 } simulation;
 
 /**
@@ -29,9 +26,10 @@ typedef struct simulation {
  * Sets all vehicle buffers to empty, lights to RED, and resets the mode and interim flag.
  * 
  * @param sim Pointer to the simulation object to initialize.
+ * @param min_light_duration Min_light_duration parameter;
  */
 
-void simulation_init(simulation *sim);
+void simulation_init(simulation *sim, int min_light_duration);
 
 /**
  * @brief Calculates the number of vehicles that could move in a given traffic light state.
