@@ -5,8 +5,8 @@ void buf_init(v_buffer *buf) { buf->head = buf->tail = buf->count = 0; }
 
 int buf_push(v_buffer *buf, const vehicle *v) {
   if (buf->count == BUFFER_SIZE)
-    return 0;              // bufor pełny
-  buf->vs[buf->head] = *v; // struktura kopiowana
+    return 0;
+  buf->vs[buf->head] = *v;
   buf->head = (buf->head + 1) % BUFFER_SIZE;
   buf->count++;
   return 1;
@@ -14,7 +14,7 @@ int buf_push(v_buffer *buf, const vehicle *v) {
 
 int buf_pop(v_buffer *buf, vehicle *out) {
   if (buf->count == 0)
-    return 0; // bufor pusty
+    return 0;
   *out = buf->vs[buf->tail];
   buf->tail = (buf->tail + 1) % BUFFER_SIZE;
   buf->count--;
@@ -25,7 +25,7 @@ int buf_count(v_buffer *buf) { return buf->count; }
 
 int buf_first(v_buffer *buf, vehicle *out) {
   if (buf->count == 0)
-    return 0; // bufor pusty
+    return 0;
   *out = buf->vs[buf->tail];
   return 1;
 }

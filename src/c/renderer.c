@@ -1,12 +1,13 @@
 #include "renderer.h"
 #include <string.h>
 
+// Positions where waiting vehicles should be shown
 Position lane_position[4][4] = {
     {
-        {0, 0},  // north->north not implemented
-        {4, 12}, // north - east
-        {4, 11}, // north south
-        {4, 10}, // north west
+        {0, 0},  // north - >north (not implemented)
+        {4, 12}, // north -> east
+        {4, 11}, // north -> south
+        {4, 10}, // north -> west
     },
     {
         {6, 20},
@@ -54,6 +55,8 @@ Position light_positions[4][4] = {{
                                       {0, 0},
                                   }};
 
+                            
+// Describes in which direction the vehicles should queue
 Position lane_direction[4] = {
     {-1, 0},
     {0, 1},
@@ -61,6 +64,7 @@ Position lane_direction[4] = {
     {0, -1},
 };
 
+// Which light on the map corresponds to which lane of vehicles
 Position lights_in_order[12] = {{0, 3}, {0, 2}, {0, 1}, {1, 0}, {1, 3}, {1, 2},
                                 {3, 0}, {3, 1}, {3, 0}, {2, 3}, {2, 0}, {2, 1}};
 
@@ -87,7 +91,7 @@ void draw(simulation* sim){
         "         |   |   |               "
     };
 
-
+  // Show last character of waiting vehicle's id on the map
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
       if (i == j)
@@ -101,10 +105,12 @@ void draw(simulation* sim){
       }
     }
   }
+
+  // print the map
   int n = 0;
   for (int i = 0; i < HEIGHT; i++) {
     for (int j = 0; j < strlen(map[i]); j++) {
-      if (map[i][j] == 'C') {
+      if (map[i][j] == 'C') { // set the character color the current light color
         state light =
             sim->lights[lights_in_order[n].col][lights_in_order[n].row];
         n++;
@@ -124,11 +130,11 @@ void draw(simulation* sim){
         dprintf(2, "%s", color);
         continue;
       }
-      if (map[i][j] == 'R') {
+      if (map[i][j] == 'R') { // reset color
         dprintf(2, RESET);
         continue;
       }
-      dprintf(2, "%c", map[i][j]);
+      dprintf(2, "%c", map[i][j]); // print map normally
     }
     dprintf(2, "\n");
   }

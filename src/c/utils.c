@@ -38,6 +38,8 @@ int dir_string_to_int(char *s) {
   return 0;
 }
 
+
+// check if two vehicles will collide
 bool collision(vehicle v1, vehicle v2) {
   direction start1 = v1.start;
   direction end1 = v1.end;
