@@ -25,7 +25,6 @@ int main() {
       v.start = stringToDir(start);
       v.end = stringToDir(end);
       sim_add_vehicle(&sim, v);
-      dprintf(2, "added %s %d %d\n", v.id, v.start, v.end);
       added_since_last_step = true;
     }
     vehicle left[8];
@@ -37,9 +36,7 @@ int main() {
       int n = sim_step(&sim, left);
 
       print_step_result(1, n, left);
-      print_step_result(2, n, left);
 
-      print_sim_status(2, &sim);
       draw(&sim);
     }
   }
