@@ -2,64 +2,68 @@
 
 const bool states[9][4][4] = {
     {
+        // all lights are red (waiting for vehicles)
         {false, false, false, false},
         {false, false, false, false},
         {false, false, false, false},
         {false, false, false, false},
     },
     {
+        // all vehicles from north road can move
         {true, true, true, true},
         {false, false, false, false},
         {false, false, false, false},
         {false, false, false, false},
     },
     {
+        // all vehicles from east road can move
         {false, false, false, false},
         {true, true, true, true},
         {false, false, false, false},
         {false, false, false, false},
     },
     {
+        // all vehicles from south road can move
         {false, false, false, false},
         {false, false, false, false},
         {true, true, true, true},
         {false, false, false, false},
     },
     {
+        // all vehicles from east road can move
         {false, false, false, false},
         {false, false, false, false},
         {false, false, false, false},
         {true, true, true, true},
     },
     {
-        // na wprost
+        // vehicles from north and south can go staight and right
         {false, false, true, true},
         {false, false, false, false},
         {true, true, false, false},
         {false, false, false, false},
     },
     {
-        // na wprost
+        // vehicles from east and west can go straight and right
         {false, false, false, false},
         {true, false, false, true},
         {false, false, false, false},
         {false, true, true, false},
     },
     {
-        // w lewo/zawracanie
+        // vehicles from north and south can go left and do a U-turn
         {true, true, false, false},
         {false, false, false, false},
         {false, false, true, true},
         {false, false, false, false},
     },
     {
-        // w lewo/zawracanie
+        // vehicles from east and west can go left and do a U-turn
         {false, false, false, false},
         {false, true, true, false},
         {false, false, false, false},
         {true, false, false, true},
     },
-
 };
 
 void simulation_init(simulation *sim, int min_light_duration) {
