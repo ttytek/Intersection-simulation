@@ -15,7 +15,7 @@ W każdym kroku symulacji algorytm oblicza w którym stani największa liczba sa
 Komenda make all kompiluje program napisany w C w plik wykonywalny sim, który wczytuje dane ze standardowego wejścia i wypisuje dane na standardowe i diagnostyczne wyjście, w uproszczonym formacie.
 Skrypt simulation.py przetwarza plik .json na format ktorego uzywa plik wykonywalny sim, i w drugą stronę.
 
-
+```
      |  |  |
      |     |
      |  |  |
@@ -79,3 +79,4 @@ Skrypt simulation.py przetwarza plik .json na format ktorego uzywa plik wykonywa
      |  |  |
      |     |
      |  |  |
+```
