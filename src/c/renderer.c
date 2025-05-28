@@ -1,5 +1,6 @@
 #include "renderer.h"
 #include <string.h>
+#include <stdio.h>
 
 #define QUEUE_LEN 5
 
@@ -111,7 +112,7 @@ void draw(simulation* sim){
   // print the map
   int n = 0;
   for (int i = 0; i < HEIGHT; i++) {
-    for (int j = 0; j < strlen(map[i]); j++) {
+    for (unsigned int j = 0; j < strlen(map[i]); j++) {
       if (map[i][j] == 'C') { // set the character color the current light color
         state light =
             sim->lights[lights_in_order[n].col][lights_in_order[n].row];
