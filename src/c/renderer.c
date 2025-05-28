@@ -1,6 +1,8 @@
 #include "renderer.h"
 #include <string.h>
 
+#define QUEUE_LEN 5
+
 // Positions where waiting vehicles should be shown
 Position lane_position[4][4] = {
     {
@@ -97,7 +99,7 @@ void draw(simulation* sim){
       if (i == j)
         continue; // not implemented
       int count = buf_count(&(sim->vehicles[i][j]));
-      for (int k = 0; k < count; k++) {
+      for (int k = 0; (k < count) && (k<QUEUE_LEN); k++) {
         char c = buf_nth_v_id(&(sim->vehicles[i][j]), k);
         int col = lane_position[i][j].col + k * lane_direction[i].col;
         int row = lane_position[i][j].row + k * lane_direction[i].row;
@@ -138,6 +140,7 @@ void draw(simulation* sim){
     }
     dprintf(2, "\n");
   }
+  dprintf(2,"\n");
 }
 
 void check() {
