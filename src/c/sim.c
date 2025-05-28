@@ -156,3 +156,7 @@ int sim_step(simulation *sim, vehicle *left) {
   }
   return n;
 }
+
+int sim_add_vehicle(simulation *sim, vehicle v){
+  return buf_push(&(sim->vehicles[v.start][v.end]), &v);
+}

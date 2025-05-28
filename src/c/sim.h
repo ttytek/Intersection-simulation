@@ -94,4 +94,14 @@ void set_lights_interim(simulation *sim, int prev, int mode);
 
 int sim_step(simulation *sim, vehicle *left);
 
+/**
+ * @brief Adds new vehicle to the intersection.
+ * 
+ * @param sim Pointer to the simulation object.
+ * @param v New vehicle being added to the intersection.
+ * @return 1 if adding new vehicle is successful, 0 if the buffer to which the vehicle would be added is already full.
+ */
+
+int sim_add_vehicle(simulation *sim, vehicle v);
+
 #endif // SIM_H
