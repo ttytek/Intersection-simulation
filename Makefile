@@ -21,5 +21,7 @@ $(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 clean:
 	rm $(SRC_DIR)/*.o
 
+test_runner:
+	gcc  -Isrc/c -Itest/Unity/src -DID_LEN=10 -DBUFFER_SIZE=4  test/test_buffer.c test/test_simulation.c test/test_main.c  src/c/buffer.c src/c/sim.c test/Unity/src/unity.c  -o test_runner
 
 .PHONY: all clean
