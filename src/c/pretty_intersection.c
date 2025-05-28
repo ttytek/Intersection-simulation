@@ -3,32 +3,21 @@
 #define WIDTH 27
 #define HEIGHT 19
 
-    const char *template[] = {
-        "         |   |   |         ",
-        "         |       |         ",
-        "         |   |   |         ",
-        "         |       |         ",
-        "         |   |   |         ",
-        "---------+-------+---------",
-        "         |       |         ",
-        "         |       |         ",
-        "         |       |         ",
-        "- - - - -|       |- - - - -",
-        "         |       |         ",
-        "         |       |         ",
-        "         |       |         ",
-        "---------+-------+---------",
-        "         |   |   |         ",
-        "         |       |         ",
-        "         |   |   |         ",
-        "         |       |         ",
-        "         |   |   |         "
-    };
-
+const char *template[] = {
+    "         |   |   |         ", "         |       |         ",
+    "         |   |   |         ", "         |       |         ",
+    "         |   |   |         ", "---------+-------+---------",
+    "         |       |         ", "         |       |         ",
+    "         |       |         ", "- - - - -|       |- - - - -",
+    "         |       |         ", "         |       |         ",
+    "         |       |         ", "---------+-------+---------",
+    "         |   |   |         ", "         |       |         ",
+    "         |   |   |         ", "         |       |         ",
+    "         |   |   |         "};
 
 typedef struct {
-    int row;
-    int col;
+  int row;
+  int col;
 } Position;
 
 Position lane_position[4][4] = {
@@ -66,41 +55,30 @@ Position lane_direction[4] = {
 }
 
 void draw(simulation* sim){
-    char[HEIGHT][WIDTH] map={
-        "         |   |   |         ",
-        "         |       |         ",
-        "         |   |   |         ",
-        "         |       |         ",
-        "         |   |   |         ",
-        "---------+-------+---------",
-        "         |       |         ",
-        "         |       |         ",
-        "         |       |         ",
-        "- - - - -|       |- - - - -",
-        "         |       |         ",
-        "         |       |         ",
-        "         |       |         ",
-        "---------+-------+---------",
-        "         |   |   |         ",
-        "         |       |         ",
-        "         |   |   |         ",
-        "         |       |         ",
-        "         |   |   |         "
-    };
+  char[HEIGHT][WIDTH] map = {
+      "         |   |   |         ", "         |       |         ",
+      "         |   |   |         ", "         |       |         ",
+      "         |   |   |         ", "---------+-------+---------",
+      "         |       |         ", "         |       |         ",
+      "         |       |         ", "- - - - -|       |- - - - -",
+      "         |       |         ", "         |       |         ",
+      "         |       |         ", "---------+-------+---------",
+      "         |   |   |         ", "         |       |         ",
+      "         |   |   |         ", "         |       |         ",
+      "         |   |   |         "};
 
-
-    for(int i=0;i<4;i++){
-        for(int j=0;j<4;j++){
-            int count=buf_count(&(sim->vs[i][j]));
-            for(int k=0;k<count;k++){
-                char c = buf_nth_v_id(&(sim->vs[i][j]), k);
-                int col = lane_position[i][j].col+k*lane_direction[i];
-                int row = lane_position[i][j].row+k*lane_direction[i];
-                map[col][row]=c;
-            }
-        }
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      int count = buf_count(&(sim->vs[i][j]));
+      for (int k = 0; k < count; k++) {
+        char c = buf_nth_v_id(&(sim->vs[i][j]), k);
+        int col = lane_position[i][j].col + k * lane_direction[i];
+        int row = lane_position[i][j].row + k * lane_direction[i];
+        map[col][row] = c;
+      }
     }
-    for(int i=0;i<HEIGHT;i++){
-        printf("%s\n",map[HEIGHT]);
-    }
+  }
+  for (int i = 0; i < HEIGHT; i++) {
+    printf("%s\n", map[HEIGHT]);
+  }
 }
