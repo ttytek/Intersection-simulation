@@ -12,7 +12,6 @@ int main() {
   char command[16];
   simulation sim;
   simulation_init(&sim, 0);
-  print_sim_status(2, &sim);
   bool added_since_last_step = false;
   while (scanf("%s", command) == 1) {
     if (strcmp(command, "addVehicle") == 0) {
@@ -27,9 +26,10 @@ int main() {
       sim_add_vehicle(&sim, v);
       added_since_last_step = true;
     }
-    vehicle left[8];
+    vehicle left[16];
     if (strcmp(command, "step") == 0) {
       if (added_since_last_step) {
+        dprintf(2,"before step state:\n");
         draw(&sim);
         added_since_last_step = false;
       }
@@ -37,6 +37,7 @@ int main() {
 
       print_step_result(1, n, left);
 
+      dprintf(2,"after step state: \n");
       draw(&sim);
     }
   }
